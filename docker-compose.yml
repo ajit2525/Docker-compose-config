@@ -1,5 +1,6 @@
 version: '3'
 services:
+#this jenkins container utilising the jenkins/jenkins image and opening in the port of 8080 and volume is $PWD/jenkins_home in host machine.
   jenkins:
      container_name: jenkins
      image: jenkins/jenkins 
@@ -9,7 +10,7 @@ services:
        - "$PWD/jenkins_home:/var/jenkins_home"
      networks:
        - net
-
+#this is container named remote host which is using image:remote-host that is getting build using dockerfile.  
   remote_host:
      container_name: remote-host
      image: remote-host
@@ -17,7 +18,7 @@ services:
        context: centos7
      networks:
        - net
-
+#this container will be used for mysql as it will have installed in it.
   db_host:
      container_name: db
      image: mysql:5.7
